@@ -1,3 +1,5 @@
+# This script produces a tkinter window with basic ui for using the vid_assembler.py script
+
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 from tkinter.ttk import *
@@ -6,8 +8,9 @@ from multiprocessing import Process
 from threading import Thread
 
 import os
-import video_maker
+import vid_assembler
 import time
+import os
 
 process = None
 canceled = False
@@ -36,7 +39,7 @@ def check():
 	return True
 
 def build(image, sound, name):
-	video_maker.assemble(image, sound, name)
+	vid_assembler.assemble(image, sound, name)
 
 def submit():
 	global process
@@ -80,7 +83,7 @@ def cancel():
 
 	progress.stop()
 
-	video_maker.clean_up(name_path.get() + "TEMP_MPY_wvf_snd.mp3")
+	vid_assembler.clean_up(name_path.get() + "TEMP_MPY_wvf_snd.mp3")
 
 def done():
 	image_button["state"] = "normal"
